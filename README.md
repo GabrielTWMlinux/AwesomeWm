@@ -1,0 +1,4 @@
+# AwesomeWm
+Meu arquivo de configuração do AwesomeWm
+
+Atenção: Para os widgets, é importante ter em mente que é necessário ter os repositórios de widgets "Lain" e "Awesome-wm-widgets" na sua pasta awesonme.
