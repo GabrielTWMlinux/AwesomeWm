@@ -248,7 +248,7 @@ globalkeys = gears.table.join(
               {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
-    awful.key({}, "F5", function() xrandr.xrandr() end),	
+    awful.key({}, "F9", function() xrandr.xrandr() end),	
     awful.key({ modkey,           }, "Left",
         function ()
             awful.client.focus.byidx( 1)
@@ -291,6 +291,12 @@ globalkeys = gears.table.join(
         {descrition = "exec time_date", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "r",      function () awful.spawn("/home/gabriel/rofi-files") end,
         {description = "rofi-files", group = "Personal launchers"}),
+     awful.key({ "Shift"         },   "p",      function () awful.spawn("rofi -show drun") end,
+       {description = "rofi-files", group = "Personal launchers"}),
+     awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
+       {description = "exec ram", group = "Personal launchers"}),
+	
+     	
     	
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -324,7 +330,7 @@ globalkeys = gears.table.join(
 
 
     -- Menubar
-    awful.key({ "Shift" }, "p", function() menubar.show() end,
+    awful.key({ modkey, }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
 )
 
