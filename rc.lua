@@ -281,7 +281,7 @@ globalkeys = gears.table.join(
               {description = "quit awesome", group = "awesome"}),
     awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/.config/Rofi/rofi/power-menu.sh") end,
 	{description = "Rofi power menu", group = "Personal launchers"}),
-    awful.key({ "Shift",         },   "f",       function () awful.spawn("alacritty -e ranger") end,
+    awful.key({ modkey,         },   "f",       function () awful.spawn("alacritty -e ranger") end,
         {descrption = "Open ranger", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
@@ -289,9 +289,9 @@ globalkeys = gears.table.join(
         {descritipn = "exec voldown", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
         {descrition = "exec time_date", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "r",      function () awful.spawn("/home/gabriel/rofi-files") end,
+    awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/rofi-files") end,
         {description = "rofi-files", group = "Personal launchers"}),
-     awful.key({ "Shift"         },   "p",      function () awful.spawn("rofi -show drun") end,
+     awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun") end,
        {description = "rofi-apps", group = "Personal launchers"}),
      awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
        {description = "exec ram", group = "Personal launchers"}),
@@ -330,7 +330,7 @@ globalkeys = gears.table.join(
 
 
     -- Menubar
-    awful.key({ modkey, }, "p", function() menubar.show() end,
+    awful.key({ "Shift" }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
 )
 
