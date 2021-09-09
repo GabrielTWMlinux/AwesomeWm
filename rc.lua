@@ -279,10 +279,10 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
-    awful.key({ "Shift",		},   "x",	function () awful.spawn("/home/gabriel/.config/Rofi/rofi/power-menu.sh") end,
+    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/.config/Rofi/rofi/power-menu.sh") end,
 	{description = "Rofi power menu", group = "Personal launchers"}),
-    awful.key({ "Shift",         },   "f",       function () awful.spawn("alacritty -e fff") end,
-        {descrption = "Open fff", group = "Personal launchers"}),
+    awful.key({ "Shift",         },   "f",       function () awful.spawn("alacritty -e ranger") end,
+        {descrption = "Open ranger", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/Scripts/volume-") end,
@@ -292,14 +292,14 @@ globalkeys = gears.table.join(
     awful.key({ "Shift"         },   "r",      function () awful.spawn("/home/gabriel/rofi-files") end,
         {description = "rofi-files", group = "Personal launchers"}),
      awful.key({ "Shift"         },   "p",      function () awful.spawn("rofi -show drun") end,
-       {description = "rofi-files", group = "Personal launchers"}),
+       {description = "rofi-apps", group = "Personal launchers"}),
      awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
        {description = "exec ram", group = "Personal launchers"}),
 	
      	
     	
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+    awful.key({ modkey,           }, "F6",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
               {description = "decrease master width factor", group = "layout"}),
