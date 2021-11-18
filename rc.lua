@@ -25,9 +25,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 
-
-
-
 ------------------------------------------------
 ------------------- ERRORS ---------------------
 ------------------------------------------------
@@ -66,14 +63,14 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "Miami/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "Nord/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. "vim"
 browser = "firefox"
-fm = "nautilus"
+fm = "nemo"
 
 -- Default modkey.
 modkey = "Mod4"
@@ -93,6 +90,10 @@ awful.layout.layouts = {
 ------------------------------------------------
 ------------------- WIDGETS --------------------
 ------------------------------------------------
+
+-- Separator Blanc
+tbox_separator2 = wibox.widget.textbox("")
+
 
 -- Separator
 tbox_separator = wibox.widget.textbox(" | ")
@@ -140,7 +141,7 @@ local taglist_buttons = gears.table.join(
                     awful.button({ }, 3, awful.tag.viewtoggle),
                     awful.button({ modkey }, 3, function(t)
                                               if client.focus then
-                                                  client.focus:toggle_tag(t)
+                                                 client.focus:toggle_tag(t)
                                               end
                                           end),
                     awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
@@ -213,15 +214,17 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, visible = false })
+    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
+	    s.mylayoutbox,
+	    tbox_separator,
 	    s.mytaglist,
-            tbox_separator,
+	    tbox_separator,
 	    s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
@@ -232,8 +235,8 @@ awful.screen.connect_for_each_screen(function(s)
 	    mymem,
   	    cpu.widget,
 	    mytextclock,
+	    tbox_separator2,
             wibox.widget.systray(),
-            s.mylayoutbox,
         },
     }
 end)
@@ -304,6 +307,8 @@ globalkeys = gears.table.join(
        {description = "rofi-apps", group = "Personal launchers"}),
      awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
        {description = "exec ram", group = "Personal launchers"}),
+     awful.key({ "Shift"         },    "v",     function () awful.spawn("/home/gabriel/rofi-beats") end,
+       {description = "rofi-beats", group = "Personal lahnchers"}),
 	
      	
     	
@@ -460,7 +465,7 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = 1,
+      properties = { border_width = 3,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
@@ -537,7 +542,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 5
+beautiful.useless_gap = 8
 
 
 
@@ -547,8 +552,10 @@ beautiful.useless_gap = 5
 -------------------- START ---------------------
 ------------------------------------------------
 
+awful.spawn.with_shell('polkit-xfce-authentication-agent-1')
 awful.spawn.with_shell('nitrogen --restore')
 awful.spawn.with_shell('xset s off')
 awful.spawn.with_shell('xset -dpms')
 awful.spawn.with_shell('numlockx on')
-awful.spawn.with_shell('picom')
+awful.spawn.with_shell('picom --experimental-backends')
+ 
