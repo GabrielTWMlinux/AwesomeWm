@@ -63,14 +63,14 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "Nord/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "TokyoNight/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. "vim"
 browser = "firefox"
-fm = "nemo"
+fm = "nautilus"
 
 -- Default modkey.
 modkey = "Mod4"
@@ -104,14 +104,14 @@ volumecfg = volume_control({})
 -- CPU Widget
 local cpu = lain.widget.cpu {
     settings = function()
-        widget:set_markup("   " .. cpu_now.usage.. "% ")
+        widget:set_markup("     " .. cpu_now.usage.. "%   ")
     end
 }
 
 -- Lain Ram
 local mymem = lain.widget.mem {
     settings = function()
-       widget:set_markup("   " .. mem_now.perc.. "%")
+       widget:set_markup("     " .. mem_now.perc.. "%   ")
     end
 }     
 
@@ -121,9 +121,6 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
-
-
-
 
 
 ------------------------------------------------
@@ -140,7 +137,7 @@ local taglist_buttons = gears.table.join(
                                           end),
                     awful.button({ }, 3, awful.tag.viewtoggle),
                     awful.button({ modkey }, 3, function(t)
-                                              if client.focus then
+                                             if client.focus then
                                                  client.focus:toggle_tag(t)
                                               end
                                           end),
@@ -190,7 +187,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "", "", "", "", "", "", "", "", "" }, s, awful.layout.layouts[1])
+    awful.tag({ "", "", "", "", "" }, s, awful.layout.layouts[1])
 
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
@@ -231,6 +228,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
 	    tbox_separator,
+	    pacupdates,
 	    volumecfg.widget,
 	    mymem,
   	    cpu.widget,
@@ -291,7 +289,7 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
-    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/.config/Rofi/rofi/power-menu.sh") end,
+    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/Scripts/power-menu.sh") end,
 	{description = "Rofi power menu", group = "Personal launchers"}),
     awful.key({ modkey,         },   "f",       function () awful.spawn("alacritty -e ranger") end,
         {descrption = "Open ranger", group = "Personal launchers"}),
@@ -309,8 +307,8 @@ globalkeys = gears.table.join(
        {description = "exec ram", group = "Personal launchers"}),
      awful.key({ "Shift"         },    "v",     function () awful.spawn("/home/gabriel/rofi-beats") end,
        {description = "rofi-beats", group = "Personal lahnchers"}),
-	
-     	
+     awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/Scripts/Arch-Updates") end,
+       {description = "exec udates", group = "Personal lahnchers"}),	
     	
 
     awful.key({ modkey,           }, "F6",     function () awful.tag.incmwfact( 0.05)          end,
@@ -465,7 +463,7 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = 3,
+      properties = { border_width = 2,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
@@ -558,4 +556,5 @@ awful.spawn.with_shell('xset s off')
 awful.spawn.with_shell('xset -dpms')
 awful.spawn.with_shell('numlockx on')
 awful.spawn.with_shell('picom --experimental-backends')
+ 
  
