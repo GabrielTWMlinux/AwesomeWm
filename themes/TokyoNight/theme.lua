@@ -23,6 +23,7 @@ theme.fg_normal     = "#ECEFF4"
 theme.fg_focus      = "#345e81"
 theme.fg_urgent     = "#CC9393"
 theme.fg_minimize   = "#ffffff"
+theme.taglist_font  = "Nerd Font 15"
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
@@ -94,7 +95,7 @@ theme.titlebar_floating_button_normal_active = themes_path.."default/titlebar/fl
 theme.titlebar_floating_button_focus_active  = themes_path.."default/titlebar/floating_focus_active.png"
 
 theme.titlebar_maximized_button_normal_inactive = themes_path.."default/titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar/mimized_focus_inactive.png"
+theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar/mmized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
