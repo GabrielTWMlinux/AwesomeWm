@@ -213,7 +213,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true })
+    s.mywibox = awful.wibar({ position = "top", screen = s, visible = false })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -313,9 +313,9 @@ globalkeys = gears.table.join(
        {description = "exec udates", group = "Personal lahnchers"}),	
     	
 
-    awful.key({ modkey,           }, "F6",     function () awful.tag.incmwfact( 0.05)          end,
+    awful.key({ modkey, "Control"          }, "Right",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+    awful.key({ modkey, "Control"          }, "Left",     function () awful.tag.incmwfact(-0.05)          end,
               {description = "decrease master width factor", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
               {description = "increase the number of master clients", group = "layout"}),
