@@ -213,7 +213,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, visible = false })
+    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -299,16 +299,16 @@ globalkeys = gears.table.join(
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/Scripts/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
-        {descrition = "exec time_date", group = "Personal launchers"}),
+--    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
+--        {descrition = "exec time_date", group = "Personal launchers"}),
     awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/Scripts/searchfiles") end,
         {description = "Search files", group = "Personal launchers"}),
      awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun") end,
        {description = "rofi-apps", group = "Personal launchers"}),
-     awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
-       {description = "exec ram", group = "Personal launchers"}),
-     awful.key({ "Shift"         },    "v",     function () awful.spawn("/home/gabriel/rofi-beats") end,
-       {description = "rofi-beats", group = "Personal lahnchers"}),
+--     awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
+--       {description = "exec ram", group = "Personal launchers"}),
+--     awful.key({ "Shift"         },    "v",     function () awful.spawn("/home/gabriel/rofi-beats") end,
+--       {description = "rofi-beats", group = "Personal lahnchers"}),
      awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/Scripts/Void-Updates") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
     	
@@ -340,12 +340,12 @@ globalkeys = gears.table.join(
                     )
                   end
               end,
-              {description = "restore minimized", group = "client"}),
+              {description = "restore minimized", group = "client"})
 
 
     -- Menubar
-    awful.key({ "Shift" }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+    --awful.key({ "Shift" }, "p", function() menubar.show() end,
+      --        {description = "show the menubar", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
