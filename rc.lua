@@ -279,6 +279,16 @@ globalkeys = gears.table.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "Left", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
+    -- Show/Hide Wibox
+     awful.key({ modkey, "Shift" }, "p", function ()
+             for s in screen do
+                 s.mywibox.visible = not s.mywibox.visible
+                 if s.mybottomwibox then
+                     s.mybottomwibox.visible = not s.mybottomwibox.visible
+                 end
+            end
+         end,
+         {description = "toggle wibox", group = "awesome"}),
 
     -- Standard program
     awful.key({ modkey,           }, "F1" , function () awful.spawn(browser) end,
@@ -557,6 +567,9 @@ screen.connect_signal("arrange", function (s)
         end
     end
 end)
+
+
+
 
 ------------------------------------------------
 -------------------- START ---------------------
