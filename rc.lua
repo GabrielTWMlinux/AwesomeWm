@@ -252,11 +252,11 @@ end)
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ "Control",           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "j",   awful.tag.viewprev,
+    awful.key({ "Control",           }, "j",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "k",  awful.tag.viewnext,
+    awful.key({ "Control",           }, "k",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
@@ -351,15 +351,15 @@ globalkeys = gears.table.join(
 clientkeys = gears.table.join(
     awful.key({ modkey,		  }, "q",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
-    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
+    awful.key({ modkey, 	  }, ",",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
+    awful.key({ modkey, 	  }, ",", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
     awful.key({ modkey, "Control" }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
-    awful.key({ modkey,           }, "n",
+    awful.key({ "Control",           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
@@ -543,19 +543,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -------------------------------------------------
 
 beautiful.useless_gap = 10
-beautiful.gap_single_client   = false
 
--- No borders when rearranging only 1 non-floating or maximized client
-screen.connect_signal("arrange", function (s)
-    local only_one = #s.tiled_clients == 1
-    for _, c in pairs(s.clients) do
-        if only_one and not c.floating or c.maximized then
-            c.border_width = 0
-        else
-            c.border_width = beautiful.border_width -- your border width
-        end
-    end
-end)
 
 
 ------------------------------------------------
