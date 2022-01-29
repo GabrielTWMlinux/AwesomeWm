@@ -123,7 +123,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 mytextclock = wibox.widget.textclock()
 
 
--- Aviso: Instalar apenas nerd-fonts-otf 
+
 
 ------------------------------------------------
 -------------------- WIBAR ---------------------
@@ -213,7 +213,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true })
+    s.mywibox = awful.wibar({ position = "top", screen = s, visible = false })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -299,14 +299,14 @@ globalkeys = gears.table.join(
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/Scripts/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
---    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
---        {descrition = "exec time_date", group = "Personal launchers"}),
+    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
+        {descrition = "exec time_date", group = "Personal launchers"}),
     awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/Scripts/searchfiles") end,
         {description = "Search files", group = "Personal launchers"}),
      awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun") end,
        {description = "rofi-apps", group = "Personal launchers"}),
---     awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
---       {description = "exec ram", group = "Personal launchers"}),
+     awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
+      {description = "exec ram", group = "Personal launchers"}),
 --     awful.key({ "Shift"         },    "v",     function () awful.spawn("/home/gabriel/rofi-beats") end,
 --       {description = "rofi-beats", group = "Personal lahnchers"}),
      awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/Scripts/Void-Updates") end,
@@ -340,12 +340,12 @@ globalkeys = gears.table.join(
                     )
                   end
               end,
-              {description = "restore minimized", group = "client"})
+              {description = "restore minimized", group = "client"}),
 
 
-    -- Menubar
-    --awful.key({ "Shift" }, "p", function() menubar.show() end,
-      --        {description = "show the menubar", group = "launcher"})
+ --    Menubar
+    awful.key({ "Shift" }, "p", function() menubar.show() end,
+              {description = "show the menubar", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -465,7 +465,7 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = 0,
+      properties = { border_width = 1,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
@@ -542,10 +542,20 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 8
+beautiful.useless_gap = 10
+beautiful.gap_single_client   = false
 
-
-
+-- No borders when rearranging only 1 non-floating or maximized client
+screen.connect_signal("arrange", function (s)
+    local only_one = #s.tiled_clients == 1
+    for _, c in pairs(s.clients) do
+        if only_one and not c.floating or c.maximized then
+            c.border_width = 0
+        else
+            c.border_width = beautiful.border_width -- your border width
+        end
+    end
+end)
 
 
 ------------------------------------------------
