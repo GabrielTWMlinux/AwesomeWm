@@ -139,7 +139,7 @@ local taglist_buttons = gears.table.join(
                                           end),
                     awful.button({ }, 3, awful.tag.viewtoggle),
                     awful.button({ modkey }, 3, function(t)
-                                            if client.focus then
+                                           if client.focus then
                                                  client.focus:toggle_tag(t)
                                               end
                                           end),
@@ -189,7 +189,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "", "", "", "", "" }, s, awful.layout.layouts[1])
+    awful.tag({ "", "", "", "", "", "" }, s, awful.layout.layouts[1])
 
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
@@ -230,7 +230,6 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
 	    tbox_separator,
-	    pacupdates,
 	    volumecfg.widget,
 	    mymem,
   	    cpu.widget,
@@ -301,24 +300,24 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
-    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/Scripts/power-menu.sh") end,
-	{description = "Rofi power menu", group = "Personal launchers"}),
     awful.key({ modkey,         },   "f",       function () awful.spawn("alacritty -e ranger") end,
         {descrption = "Open ranger", group = "Personal launchers"}),
+    awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun") end,
+       {description = "rofi-apps", group = "Personal launchers"}),
+    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/Scripts/power-menu.sh") end,
+	{description = "Rofi power menu", group = "Personal launchers"}),
+    awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/Scripts/searchfiles") end,
+        {description = "Search files", group = "Personal launchers"}),
+    awful.key({ modkey         },    "w",     function () awful.spawn("/home/gabriel/Scripts/windowlocation") end,
+       {description = "exec udates", group = "Personal lahnchers"}),	
     awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/Scripts/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
         {descrition = "exec time_date", group = "Personal launchers"}),
-    awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/Scripts/searchfiles") end,
-        {description = "Search files", group = "Personal launchers"}),
-     awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun") end,
-       {description = "rofi-apps", group = "Personal launchers"}),
      awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
       {description = "exec ram", group = "Personal launchers"}),
---     awful.key({ "Shift"         },    "v",     function () awful.spawn("/home/gabriel/rofi-beats") end,
---       {description = "rofi-beats", group = "Personal lahnchers"}),
      awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/Scripts/Void-Updates") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
     	

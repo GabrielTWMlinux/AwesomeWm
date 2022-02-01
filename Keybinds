@@ -17,6 +17,7 @@ super + p = Abrir rofi apps
 super + q = Fechar janela
 super + r = Rofi Files
 super + x = Abrir Power-Menu
+super + w = Abrir windowlocation
 
 super + left = Foco para a janela do lado esquerdo
 super + right = Foco para a janela do lado direito
@@ -52,3 +53,4 @@ Shift + m = Aumentar volume
 Shift + n = Diminuir volume
 Shift + p = Exibir Menubar
 Shift + u = Exibir quantidade de updates
+
