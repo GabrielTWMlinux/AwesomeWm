@@ -310,6 +310,8 @@ globalkeys = gears.table.join(
         {description = "Search files", group = "Personal launchers"}),
     awful.key({ modkey         },    "w",     function () awful.spawn("/home/gabriel/Scripts/windowlocation") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
+    awful.key({ modkey         },   "h",      function () awful.spawn("alacritty -e htop") end,
+        {description = "Open htop", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/Scripts/volume-") end,

@@ -11,6 +11,7 @@ super + F2 = Abrir Nautilus
 super + espaço = Voltar tag
 
 super + f = Abrir Ranger
+super + h = htop
 super + m = Maximina janela / Desmaximiza janela
 super + n = Janela em foco entra em floating mode / Tira a janela do floating mode
 super + p = Abrir rofi apps
