@@ -111,7 +111,7 @@ local cpu = lain.widget.cpu {
 -- Lain Ram
 local mymem = lain.widget.mem {
     settings = function()
-       widget:set_markup("  " .. mem_now.perc.. "% ")
+       widget:set_markup("  " .. mem_now.perc.. " % ")
     end
 }     
 
@@ -231,8 +231,7 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
 	    tbox_separator,
 	    volumecfg.widget,
-	    mymem,
-  	    cpu.widget,
+	    tbox_separator,
 	    mytextclock,
 	    tbox_separator2,
             wibox.widget.systray(),
