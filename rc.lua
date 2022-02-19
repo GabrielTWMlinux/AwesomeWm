@@ -250,6 +250,43 @@ end)
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    -- Standard program
+    awful.key({ modkey,           }, "F1" , function () awful.spawn(browser) end,
+    	      {description = "open a browser", group = "launcher"}),
+    awful.key({ modkey,           }, "F2" , function () awful.spawn(fm) end,
+    	      {description = "open a file manager", group = "launcher"}),
+    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+              {description = "open a terminal", group = "launcher"}),
+    awful.key({ modkey, "Shift" }, "r", awesome.restart,
+              {description = "reload awesome", group = "awesome"}),
+    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+              {description = "quit awesome", group = "awesome"}),
+    awful.key({ modkey,         },   "f",       function () awful.spawn("alacritty -e ranger") end,
+        {descrption = "Open ranger", group = "Personal launchers"}),
+    awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun") end,
+       {description = "rofi-apps", group = "Personal launchers"}),
+    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/Scripts/power-menu.sh") end,
+	{description = "Rofi power menu", group = "Personal launchers"}),
+    awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/Scripts/searchfiles") end,
+        {description = "Search files", group = "Personal launchers"}),
+    awful.key({ modkey         },   "t",      function () awful.spawn("alacritty -e htop") end,
+        {description = "Open htop", group = "Personal launchers"}),
+    awful.key({ modkey         },    "w",     function () awful.spawn("/home/gabriel/Scripts/windowlocation") end,
+       {description = "exec udates", group = "Personal lahnchers"}),	
+    awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
+        {description = "exec volup", group = "Personal launchers"}),
+    awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/Scripts/volume-") end,
+        {descritipn = "exec voldown", group = "Personal launchers"}),
+    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
+        {descrition = "exec time_date", group = "Personal launchers"}),
+    awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
+      {description = "exec ram", group = "Personal launchers"}),
+    awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/Scripts/Void-Updates") end,
+       {description = "exec udates", group = "Personal lahnchers"}),	
+    awful.key({ "Shift"         },    "p",     function()  menubar.show() end,
+              {description = "show the menubar", group = "launcher"}),
+
+    -- Layout Manipulation
     awful.key({ "Control",           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ "Control",           }, "j",   awful.tag.viewprev,
@@ -272,7 +309,6 @@ globalkeys = gears.table.join(
         {description = "focus previous by index", group = "client"}
     ),
 
-    -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "Right", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "Left", function () awful.client.swap.byidx( -1)    end,
@@ -296,44 +332,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
               {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-              {description = "select previous", group = "layout"}),
+              {description = "select previous", group = "layout"})
 
 
-    -- Standard program
-    awful.key({ modkey,           }, "F1" , function () awful.spawn(browser) end,
-    	      {description = "open a browser", group = "launcher"}),
-    awful.key({ modkey,           }, "F2" , function () awful.spawn(fm) end,
-    	      {description = "open a file manager", group = "launcher"}),
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey, "Shift" }, "r", awesome.restart,
-              {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-              {description = "quit awesome", group = "awesome"}),
-    awful.key({ modkey,         },   "f",       function () awful.spawn("alacritty -e ranger") end,
-        {descrption = "Open ranger", group = "Personal launchers"}),
-    awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun") end,
-       {description = "rofi-apps", group = "Personal launchers"}),
-    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/Scripts/power-menu.sh") end,
-	{description = "Rofi power menu", group = "Personal launchers"}),
-    awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/Scripts/searchfiles") end,
-    awful.key({ modkey         },   "t",      function () awful.spawn("alacritty -e htop") end,
-        {description = "Open htop", group = "Personal launchers"}),
-        {description = "Search files", group = "Personal launchers"}),
-    awful.key({ modkey         },    "w",     function () awful.spawn("/home/gabriel/Scripts/windowlocation") end,
-       {description = "exec udates", group = "Personal lahnchers"}),	
-    awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
-        {description = "exec volup", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/Scripts/volume-") end,
-        {descritipn = "exec voldown", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
-        {descrition = "exec time_date", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
-      {description = "exec ram", group = "Personal launchers"}),
-    awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/Scripts/Void-Updates") end,
-       {description = "exec udates", group = "Personal lahnchers"}),	
-    awful.key({ "Shift"         },    "p",     function()  menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -363,7 +364,7 @@ clientkeys = gears.table.join(
         {description = "(un)maximize horizontally", group = "client"}),
 
   -- Resize windows
-    awful.key({ modkey, "Control" }, "Down", function (c)
+    awful.key({ modkey, "Control" }, "Up", function (c)
       if c.floating then
         c:relative_move( 0, 0, 0, -10)
       else
@@ -371,7 +372,7 @@ clientkeys = gears.table.join(
       end
     end,
     {description = "Floating Resize Vertical -", group = "client"}),
-    awful.key({ modkey, "Control" }, "Up", function (c)
+    awful.key({ modkey, "Control" }, "Down", function (c)
       if c.floating then
         c:relative_move( 0, 0, 0,  10)
       else
