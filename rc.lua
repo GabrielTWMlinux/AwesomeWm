@@ -213,7 +213,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, visible = false })
+    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -288,6 +288,21 @@ globalkeys = gears.table.join(
          end,
          {description = "toggle wibox", group = "awesome"}),
 
+ 
+    awful.key({ modkey, "Control"          }, "Right",     function () awful.tag.incmwfact( 0.05)          end,
+              {description = "increase master width factor", group = "layout"}),
+    awful.key({ modkey, "Control"          }, "Left",     function () awful.tag.incmwfact(-0.05)          end,
+              {description = "decrease master width factor", group = "layout"}),
+    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
+              {description = "increase the number of master clients", group = "layout"}),
+    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
+              {description = "decrease the number of master clients", group = "layout"}),
+    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+              {description = "select next", group = "layout"}),
+    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+              {description = "select previous", group = "layout"}),
+
+
     -- Standard program
     awful.key({ modkey,           }, "F1" , function () awful.spawn(browser) end,
     	      {description = "open a browser", group = "launcher"}),
@@ -306,40 +321,22 @@ globalkeys = gears.table.join(
     awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/Scripts/power-menu.sh") end,
 	{description = "Rofi power menu", group = "Personal launchers"}),
     awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/Scripts/searchfiles") end,
+    awful.key({ modkey         },   "t",      function () awful.spawn("alacritty -e htop") end,
+        {description = "Open htop", group = "Personal launchers"}),
         {description = "Search files", group = "Personal launchers"}),
     awful.key({ modkey         },    "w",     function () awful.spawn("/home/gabriel/Scripts/windowlocation") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
-    awful.key({ modkey         },   "h",      function () awful.spawn("alacritty -e htop") end,
-        {description = "Open htop", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/Scripts/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
         {descrition = "exec time_date", group = "Personal launchers"}),
-     awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
+    awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
       {description = "exec ram", group = "Personal launchers"}),
-     awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/Scripts/Void-Updates") end,
+    awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/Scripts/Void-Updates") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
-    	
-
-    awful.key({ modkey, "Control"          }, "Right",     function () awful.tag.incmwfact( 0.05)          end,
-              {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey, "Control"          }, "Left",     function () awful.tag.incmwfact(-0.05)          end,
-              {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
-              {description = "increase the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-              {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
-              {description = "select next", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-              {description = "select previous", group = "layout"}),
-
-
-
- --    Menubar
-    awful.key({ "Shift" }, "p", function() menubar.show() end,
+    awful.key({ "Shift"         },    "p",     function()  menubar.show() end,
               {description = "show the menubar", group = "launcher"})
 )
 
@@ -367,8 +364,43 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"})
-)
+        {description = "(un)maximize horizontally", group = "client"}),
+
+  -- Resize windows
+    awful.key({ modkey }, "j", function (c)
+      if c.floating then
+        c:relative_move( 0, 0, 0, -10)
+      else
+        awful.client.incwfact(0.025)
+      end
+    end,
+    {description = "Floating Resize Vertical -", group = "client"}),
+    awful.key({ modkey }, "k", function (c)
+      if c.floating then
+        c:relative_move( 0, 0, 0,  10)
+      else
+        awful.client.incwfact(-0.025)
+      end
+    end,
+    {description = "Floating Resize Vertical +", group = "client"}),
+    awful.key({ modkey }, "h", function (c)
+      if c.floating then
+        c:relative_move( 0, 0, -10, 0)
+      else
+        awful.tag.incmwfact(-0.025)
+      end
+    end,
+    {description = "Floating Resize Horizontal -", group = "client"}),
+    awful.key({ modkey }, "l", function (c)
+      if c.floating then
+        c:relative_move( 0, 0,  10, 0)
+      else
+        awful.tag.incmwfact(0.025)
+      end
+    end,
+    {description = "Floating Resize Horizontal +", group = "client"})
+
+    )
 
 -- Bind all key numbers to tags.
 for i = 1, 9 do
@@ -437,6 +469,21 @@ clientbuttons = gears.table.join(
 root.keys(globalkeys)
 -- }}}
 
+local function client_status(client)
+
+    local layout = awful.layout.get(mouse.screen)
+
+    if (layout == awful.layout.suit.floating) or (client and client.floating) then
+        return "floating"
+    end
+
+    if layout == awful.layout.suit.max then
+        return "max"
+    end
+
+    return "other"
+
+end
 
 
 
@@ -526,12 +573,12 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 10
+beautiful.useless_gap = 8
 
 --beautiful.gap_single_client   = false
 
 -- No borders when rearranging only 1 non-floating or maximized client
---screen.connect_signal("arrange", function (s)
+-- screen.connect_signal("arrange", function (s)
 --    local only_one = #s.tiled_clients == 1
 --    for _, c in pairs(s.clients) do
 --        if only_one and not c.floating or c.maximized then
@@ -541,6 +588,8 @@ beautiful.useless_gap = 10
 --        end
 --    end
 -- end)
+
+
 
 ------------------------------------------------
 -------------------- START ---------------------
