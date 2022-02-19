@@ -289,10 +289,6 @@ globalkeys = gears.table.join(
          {description = "toggle wibox", group = "awesome"}),
 
  
-    awful.key({ modkey, "Control"          }, "Right",     function () awful.tag.incmwfact( 0.05)          end,
-              {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey, "Control"          }, "Left",     function () awful.tag.incmwfact(-0.05)          end,
-              {description = "decrease master width factor", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
               {description = "increase the number of master clients", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
@@ -367,7 +363,7 @@ clientkeys = gears.table.join(
         {description = "(un)maximize horizontally", group = "client"}),
 
   -- Resize windows
-    awful.key({ modkey }, "j", function (c)
+    awful.key({ modkey, "Control" }, "Down", function (c)
       if c.floating then
         c:relative_move( 0, 0, 0, -10)
       else
@@ -375,7 +371,7 @@ clientkeys = gears.table.join(
       end
     end,
     {description = "Floating Resize Vertical -", group = "client"}),
-    awful.key({ modkey }, "k", function (c)
+    awful.key({ modkey, "Control" }, "Up", function (c)
       if c.floating then
         c:relative_move( 0, 0, 0,  10)
       else
@@ -383,7 +379,7 @@ clientkeys = gears.table.join(
       end
     end,
     {description = "Floating Resize Vertical +", group = "client"}),
-    awful.key({ modkey }, "h", function (c)
+    awful.key({ modkey, "Control" }, "Left", function (c)
       if c.floating then
         c:relative_move( 0, 0, -10, 0)
       else
@@ -391,7 +387,7 @@ clientkeys = gears.table.join(
       end
     end,
     {description = "Floating Resize Horizontal -", group = "client"}),
-    awful.key({ modkey }, "l", function (c)
+    awful.key({ modkey, "Control" }, "Right", function (c)
       if c.floating then
         c:relative_move( 0, 0,  10, 0)
       else
