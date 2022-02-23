@@ -250,6 +250,7 @@ end)
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    
     -- Standard program
     awful.key({ modkey,           }, "F1" , function () awful.spawn(browser) end,
     	      {description = "open a browser", group = "launcher"}),
@@ -286,9 +287,20 @@ globalkeys = gears.table.join(
     awful.key({ "Shift"         },    "p",     function()  menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
-    -- Layout Manipulation
-    awful.key({ "Control",           }, "s",      hotkeys_popup.show_help,
-              {description="show help", group="awesome"}),
+    
+    -- Show/Hide Wibox
+    awful.key({ modkey, "Shift" }, "p", function ()
+         for s in screen do
+                s.mywibox.visible = not s.mywibox.visible
+                if s.mybottomwibox then
+                    s.mybottomwibox.visible = not s.mybottomwibox.visible
+                end
+            end
+         end,
+              {description = "toggle wibox", group = "awesome"}),
+
+
+    -- Control Clients
     awful.key({ "Control",           }, "j",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ "Control",           }, "k",  awful.tag.viewnext,
@@ -296,35 +308,18 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
     awful.key({}, "F9", function() xrandr.xrandr() end),	
-    awful.key({ modkey,           }, "Left",
-        function ()
-            awful.client.focus.byidx( 1)
-        end,
-        {description = "focus next by index", group = "client"}
-    ),
-    awful.key({ modkey,           }, "Right",
-        function ()
-            awful.client.focus.byidx(-1)
-        end,
-        {description = "focus previous by index", group = "client"}
-    ),
+    
+
+    -- Layout Manipulation
+    awful.key({ modkey,           }, "Left", function () awful.client.focus.byidx( 1) end,
+        {description = "focus next by index", group = "client"}),
+    awful.key({ modkey,          }, "Right", function () awful.client.focus.byidx(-1) end,
+        {description = "focus previous by index", group = "client"}),
 
     awful.key({ modkey, "Shift"   }, "Right", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "Left", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
-    -- Show/Hide Wibox
-     awful.key({ modkey, "Shift" }, "p", function ()
-             for s in screen do
-                 s.mywibox.visible = not s.mywibox.visible
-                 if s.mybottomwibox then
-                     s.mybottomwibox.visible = not s.mybottomwibox.visible
-                 end
-            end
-         end,
-         {description = "toggle wibox", group = "awesome"}),
-
- 
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
               {description = "increase the number of master clients", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
@@ -338,32 +333,24 @@ globalkeys = gears.table.join(
 )
 
 clientkeys = gears.table.join(
-    awful.key({ modkey,		  }, "q",      function (c) c:kill()                         end,
+    
+    -- Close Clients
+    awful.key({ modkey,		  }, "q",      function (c) c:kill()             end,
               {description = "close", group = "client"}),
+
+
+    -- Layout Manipulation
     awful.key({ modkey, 	  }, "n",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, 	  }, ",", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
-    awful.key({ modkey,           }, "m",
-        function (c)
-            c.maximized = not c.maximized
-            c:raise()
-        end ,
-        {description = "(un)maximize", group = "client"}),
-    awful.key({ modkey, "Control"   }, "m",
-        function (c)
-            c.maximized_vertical = not c.maximized_vertical
-            c:raise()
-        end ,
-        {description = "(un)maximize vertically", group = "client"}),
-    awful.key({ modkey, "Control"   }, "n",
-        function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c:raise()
-        end ,
-        {description = "(un)maximize horizontally", group = "client"}),
+    awful.key({ modkey,           }, "m", function (c) c.maximized = not c.maximized c:raise() end,
+              {description = "(un)maximize", group = "client"}),
+    awful.key({ modkey, "Control"   }, "m",function (c) c.maximized_vertical = not c.maximized_vertical c:raise() end,
+              {description = "(un)maximize vertically", group = "client"}),
+    awful.key({ modkey, "Control"   }, "n",function (c) c.maximized_horizontal = not c.maximized_horizontal c:raise() end,
+              {description = "(un)maximize horizontally", group = "client"}),
 
-  -- Resize windows
     awful.key({ modkey, "Control" }, "Up", function (c)
       if c.floating then
         c:relative_move( 0, 0, 0, -10)
@@ -570,7 +557,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 8
+beautiful.useless_gap = 9
 
 --beautiful.gap_single_client   = false
 
