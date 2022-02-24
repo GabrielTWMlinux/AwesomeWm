@@ -13,14 +13,14 @@ local theme = {}
 
 theme.font          = "Font Awesome 9"
 
-theme.bg_normal     = "#050505"
-theme.bg_focus      = "#050505"
+theme.bg_normal     = "#0e0e0e"
+theme.bg_focus      = "#0e0e0e"
 theme.bg_urgent     = "#593131"
 theme.bg_minimize   = "#000000"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#ECEFF4"
-theme.fg_focus      = "#345e81"
+theme.fg_focus      = "#424242"
 theme.fg_urgent     = "#CC9393"
 theme.fg_minimize   = "#ffffff"
 theme.taglist_font  = "Nerd Font 15"
@@ -28,7 +28,7 @@ theme.taglist_font  = "Nerd Font 15"
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
-theme.border_focus  = "#ffffff"
+theme.border_focus  = "#bbbbbb"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -42,8 +42,8 @@ theme.border_marked = "#91231c"
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example: 
-theme.tasklist_bg_focus  = "#050505"
-theme.tasklist_fg_focus  = "#6a89a2"
+theme.tasklist_bg_focus  = "#0e0e0e"
+theme.tasklist_fg_focus  = "#7b7b7b"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
@@ -95,7 +95,7 @@ theme.titlebar_floating_button_normal_active = themes_path.."default/titlebar/fl
 theme.titlebar_floating_button_focus_active  = themes_path.."default/titlebar/floating_focus_active.png"
 
 theme.titlebar_maximized_button_normal_inactive = themes_path.."default/titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar/mmized_focus_inactive.png"
+theme.titlebar_maximized_button_focus_inactiv  = themes_path.."default/titlebar/mmized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
