@@ -213,7 +213,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true })
+    s.mywibox = awful.wibar({ position = "top", screen = s, visible = false })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -557,7 +557,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 9
+beautiful.useless_gap = 12
 
 --beautiful.gap_single_client   = false
 
