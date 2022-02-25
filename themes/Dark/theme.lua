@@ -13,8 +13,8 @@ local theme = {}
 
 theme.font          = "Font Awesome 9"
 
-theme.bg_normal     = "#0e0e0e"
-theme.bg_focus      = "#0e0e0e"
+theme.bg_normal     = "#080808"
+theme.bg_focus      = "#080808"
 theme.bg_urgent     = "#593131"
 theme.bg_minimize   = "#000000"
 theme.bg_systray    = theme.bg_normal
@@ -28,7 +28,7 @@ theme.taglist_font  = "Nerd Font 15"
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
-theme.border_focus  = "#bbbbbb"
+theme.border_focus  = "#777777"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -42,7 +42,7 @@ theme.border_marked = "#91231c"
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example: 
-theme.tasklist_bg_focus  = "#0e0e0e"
+theme.tasklist_bg_focus  = "#080808"
 theme.tasklist_fg_focus  = "#7b7b7b"
 
 -- Generate taglist squares:
