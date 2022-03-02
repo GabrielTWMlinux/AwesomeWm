@@ -557,7 +557,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 13
+beautiful.useless_gap = 14
 
 --beautiful.gap_single_client   = false
 
