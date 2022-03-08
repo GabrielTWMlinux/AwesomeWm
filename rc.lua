@@ -1,4 +1,4 @@
--- If LuaRocks is installed, make sure that packages installed through it are
+-- if LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
@@ -268,13 +268,15 @@ globalkeys = gears.table.join(
        {description = "rofi-apps", group = "Personal launchers"}),
     awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/Scripts/power-menu.sh") end,
 	{description = "Rofi power menu", group = "Personal launchers"}),
-    awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/Scripts/searchfiles") end,
+    awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/Scripts/rofi-files") end,
         {description = "Search files", group = "Personal launchers"}),
     awful.key({ modkey         },   "t",      function () awful.spawn("alacritty -e htop") end,
         {description = "Open htop", group = "Personal launchers"}),
     awful.key({ modkey         },    "w",     function () awful.spawn("/home/gabriel/Scripts/windowlocation") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
-    awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
+    awful.key({ modkey         },    "s",     function () awful.spawn("/home/gabriel/Scripts/rofi-search") end,
+       {description = "rofi-search", group = "Personal lahnchers"}),	
+       awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/Scripts/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
