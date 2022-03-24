@@ -63,7 +63,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "Dark/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "Tokyo/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -213,7 +213,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, visible = false })
+    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -559,7 +559,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 14
+beautiful.useless_gap = 8
 
 --beautiful.gap_single_client   = false
 
@@ -583,6 +583,7 @@ beautiful.useless_gap = 14
 
 awful.spawn.with_shell('polkit-xfce-authentication-agent-1')
 awful.spawn.with_shell('nitrogen --restore')
+awful.spawn.with_shell('xset r rate 300 50')
 awful.spawn.with_shell('xset s off')
 awful.spawn.with_shell('xset -dpms')
 awful.spawn.with_shell('numlockx on')
