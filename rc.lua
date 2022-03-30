@@ -69,7 +69,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "Tokyo/theme.lua")
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. "vim"
-browser = "firefox"
+browser = "qutebrowser"
 fm = "nautilus"
 
 -- Default modkey.
@@ -262,28 +262,32 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
-    awful.key({ modkey,         },   "f",       function () awful.spawn("alacritty -e ranger") end,
+    
+    awful.key({ modkey         },   "a",      function () awful.spawn("alacritty -e pulsemixer") end,
+    	{description = "exec pulsemixer", group = "Personal launchers"}),
+    awful.key({ modkey,         },  "f",       function () awful.spawn("alacritty -e ranger") end,
         {descrption = "Open ranger", group = "Personal launchers"}),
     awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun") end,
        {description = "rofi-apps", group = "Personal launchers"}),
-    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/Scripts/power-menu.sh") end,
-	{description = "Rofi power menu", group = "Personal launchers"}),
     awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/Scripts/rofi-files") end,
         {description = "Search files", group = "Personal launchers"}),
+    awful.key({ modkey         },    "s",     function () awful.spawn("/home/gabriel/Scripts/rofi-search") end,
+       {description = "rofi-search", group = "Personal lahnchers"}),	
     awful.key({ modkey         },   "t",      function () awful.spawn("alacritty -e htop") end,
         {description = "Open htop", group = "Personal launchers"}),
     awful.key({ modkey         },    "w",     function () awful.spawn("/home/gabriel/Scripts/windowlocation") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
-    awful.key({ modkey         },    "s",     function () awful.spawn("/home/gabriel/Scripts/rofi-search") end,
-       {description = "rofi-search", group = "Personal lahnchers"}),	
-       awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
+    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/Scripts/power-menu.sh") end,
+	{description = "Rofi power menu", group = "Personal launchers"}),
+       
+    awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/Scripts/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
         {descrition = "exec time_date", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
-      {description = "exec ram", group = "Personal launchers"}),
+	{description = "exec ram", group = "Personal launchers"}),
     awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/Scripts/Void-Updates") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
     awful.key({ "Shift"         },    "p",     function()  menubar.show() end,
