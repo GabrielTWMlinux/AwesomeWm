@@ -11,10 +11,8 @@ local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 -- Widget and layout library
-local vicious = require("vicious")
 local volume_control = require("volume-control")
 local watch = require("awful.widget.watch")
-local lain = require("lain")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
@@ -63,13 +61,13 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "Tokyo/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "Dark/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. "vim"
-browser = "qutebrowser"
+browser = "firefox"
 fm = "nautilus"
 
 -- Default modkey.
@@ -101,19 +99,6 @@ tbox_separator = wibox.widget.textbox(" | ")
 -- define your volume control, using default settings:
 volumecfg = volume_control({})
 
--- CPU Widget
-local cpu = lain.widget.cpu {
-    settings = function()
-        widget:set_markup("  " .. cpu_now.usage.. "% ")
-    end
-}
-
--- Lain Ram
-local mymem = lain.widget.mem {
-    settings = function()
-       widget:set_markup("  " .. mem_now.perc.. " % ")
-    end
-}     
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
@@ -189,7 +174,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7" }, s, awful.layout.layouts[1])
 
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
@@ -213,7 +198,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true })
+    s.mywibox = awful.wibar({ position = "top", screen = s, visible = false })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -223,13 +208,12 @@ awful.screen.connect_for_each_screen(function(s)
 	    s.mylayoutbox,
 	    tbox_separator,
 	    s.mytaglist,
-	    tbox_separator,
+	    tbox_separator2,
 	    s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-	    tbox_separator,
 	    volumecfg.widget,
 	    tbox_separator,
 	    mytextclock,
@@ -267,31 +251,33 @@ globalkeys = gears.table.join(
     	{description = "exec pulsemixer", group = "Personal launchers"}),
     awful.key({ modkey,         },  "f",       function () awful.spawn("alacritty -e ranger") end,
         {descrption = "Open ranger", group = "Personal launchers"}),
-    awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun") end,
+    awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun ") end,
        {description = "rofi-apps", group = "Personal launchers"}),
     awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/Scripts/rofi-files") end,
         {description = "Search files", group = "Personal launchers"}),
-    awful.key({ modkey         },    "s",     function () awful.spawn("/home/gabriel/Scripts/rofi-search") end,
-       {description = "rofi-search", group = "Personal lahnchers"}),	
     awful.key({ modkey         },   "t",      function () awful.spawn("alacritty -e htop") end,
         {description = "Open htop", group = "Personal launchers"}),
     awful.key({ modkey         },    "w",     function () awful.spawn("/home/gabriel/Scripts/windowlocation") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
     awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/Scripts/power-menu.sh") end,
 	{description = "Rofi power menu", group = "Personal launchers"}),
-       
+
+    awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
+	{description = "exec ram", group = "Personal launchers"}),
+    awful.key({ "Shift"         },   "C",      function () awful.spawn("/home/gabriel/Scripts/cpu") end,
+        {descrition = "exec cpu", group = "Personal launchers"}),
+    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
+        {descrition = "exec time_date", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/Scripts/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
-        {descrition = "exec time_date", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
-	{description = "exec ram", group = "Personal launchers"}),
-    awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/Scripts/Void-Updates") end,
+    awful.key({ "Shift"         },   "s",      function () awful.spawn("/home/gabriel/Scripts/screenshot") end,
+        {description = "Screenshot", group = "Personal launchers"}),
+    awful.key({ "Shift"         },   "t",      function () awful.spawn("/home/gabriel/Scripts/weather-notify") end,
+        {description = "Weather", group = "Personal launchers"}),
+    awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/Scripts/xbps-update") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
-    awful.key({ "Shift"         },    "p",     function()  menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
 
     
     -- Show/Hide Wibox
@@ -563,7 +549,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 8
+beautiful.useless_gap = 13
 
 --beautiful.gap_single_client   = false
 

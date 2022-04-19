@@ -10,6 +10,7 @@ super + F1 = Abrir Firefox
 super + F2 = Abrir Nautilus
 super + espaço = Voltar tag
 
+super + a = pulsemixer
 super + f = Abrir Ranger
 super + m = Maximina janela / Desmaximiza janela
 super + n = Janela em foco entra em floating mode / Tira a janela do floating mode
@@ -27,6 +28,7 @@ super + shift + 1 a 5 = Move a janela em foco para a tag/workspace
 super + shift + right = Troca a janela em foco para a direita
 super + shift + left = Troca a janela em foco para a esquerda
 
+super + shift + f = Fullscreen
 super + shift + h = Aumenta o número de janelas master
 super + shift + l = diminui o número de janelas master
 super + shift + p = Exibir ou escon der o painel (wibox)
@@ -48,13 +50,12 @@ control + k = ver tag seguinte
 control + s = exibir ajuda
 
 
-
-
 SHIFT
-Shift + b = Exibir consumo de memória ram
-Shift + d = Exibir data e hora
+Shift + b = Ram
+Shift + c = CPU
+Shift + d = Date
 Shift + m = Aumentar volume
 Shift + n = Diminuir volume
-Shift + p = Exibir Menubar
-Shift + u = Exibir quantidade de updates
-
+Shift + s = screenshot
+Shift + t = Temperatura
+Shift + u = Updates
