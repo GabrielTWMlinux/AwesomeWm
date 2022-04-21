@@ -183,7 +183,6 @@ clientkeys = gears.table.join(
     -- Layout Manipulation
     awful.key({ modkey, "Shift"   }, "f", function (c) c.fullscreen = not c.fullscreen c:raise() end,
        	      {description = "toggle fullscreen", group = "client"}),
-
     awful.key({ modkey, 	  }, "n",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
     awful.key({ modkey, 	  }, ",", function (c) c:swap(awful.client.getmaster()) end,
