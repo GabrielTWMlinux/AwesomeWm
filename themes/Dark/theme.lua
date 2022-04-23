@@ -27,8 +27,8 @@ theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
-theme.border_normal = "#111111"
-theme.border_focus  = "#666666"
+theme.border_normal = "#333333"
+theme.border_focus  = "#888888"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -95,7 +95,7 @@ theme.titlebar_floating_button_normal_active = themes_path.."default/titlebar/fl
 theme.titlebar_floating_button_focus_active  = themes_path.."default/titlebar/floating_focus_active.png"
 
 theme.titlebar_maximized_button_normal_inactive = themes_path.."default/titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactiv  = themes_path.."default/titlebar/mmized_focus_inactive.png"
+theme.titlebar_maximized_button_focus_inactv  = themes_path.."default/titlebar/mmized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
