@@ -63,7 +63,7 @@ terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. "vim"
 browser = "firefox"
-fm = "nautilus"
+fm = "pcmanfm"
 
 -- Default modkey.
 modkey = "Mod4"
@@ -114,30 +114,30 @@ globalkeys = gears.table.join(
         {descrption = "Open ranger", group = "Personal launchers"}),
     awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun ") end,
        {description = "rofi-apps", group = "Personal launchers"}),
-    awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/Scripts/rofi-files") end,
+    awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/.config/Scripts/rofi-files") end,
         {description = "Search files", group = "Personal launchers"}),
     awful.key({ modkey         },   "t",      function () awful.spawn("alacritty -e htop") end,
         {description = "Open htop", group = "Personal launchers"}),
-    awful.key({ modkey         },    "w",     function () awful.spawn("/home/gabriel/Scripts/windowlocation") end,
+    awful.key({ modkey         },    "w",     function () awful.spawn("/home/gabriel/.config/Scripts/windowlocation") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
-    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/Scripts/power-menu.sh") end,
+    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/.config/Scripts/power-menu.sh") end,
 	{description = "Rofi power menu", group = "Personal launchers"}),
 
-    awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/Scripts/ram") end,
+    awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/.config/Scripts/ram") end,
 	{description = "exec ram", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "C",      function () awful.spawn("/home/gabriel/Scripts/cpu") end,
+    awful.key({ "Shift"         },   "C",      function () awful.spawn("/home/gabriel/.config/Scripts/cpu") end,
         {descrition = "exec cpu", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/Scripts/time") end,
+    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/.config/Scripts/time") end,
         {descrition = "exec time_date", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/Scripts/volume+") end,
+    awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/.config/Scripts/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/Scripts/volume-") end,
+    awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/.config/Scripts/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "s",      function () awful.spawn("/home/gabriel/Scripts/screenshot") end,
+    awful.key({ "Shift"         },   "s",      function () awful.spawn("/home/gabriel/.config/Scripts/screenshot") end,
         {description = "Screenshot", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "t",      function () awful.spawn("/home/gabriel/Scripts/weather-notify") end,
+    awful.key({ "Shift"         },   "t",      function () awful.spawn("/home/gabriel/.config/Scripts/weather-notify") end,
         {description = "Weather", group = "Personal launchers"}),
-    awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/Scripts/xbps-update") end,
+    awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/.config/Scripts/xbps-update") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
     
 
@@ -146,6 +146,8 @@ globalkeys = gears.table.join(
               {description = "view previous", group = "tag"}),
     awful.key({ "Control",           }, "k",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
+
+
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
     awful.key({}, "F9", function() xrandr.xrandr() end),	
@@ -395,7 +397,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 13
+beautiful.useless_gap = 15
 
 --beautiful.gap_single_client   = false
 
