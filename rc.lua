@@ -63,7 +63,7 @@ terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. "vim"
 browser = "firefox"
-fm = "pcmanfm"
+fm = "nautilus"
 
 -- Default modkey.
 modkey = "Mod4"
