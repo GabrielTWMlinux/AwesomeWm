@@ -13,6 +13,7 @@ require("awful.autofocus")
 -- Widget and layout library
 local watch = require("awful.widget.watch")
 local wibox = require("wibox")
+local lain = require("lain")
 local volume_control= require("volume-control")
 -- Theme handling library
 local beautiful = require("beautiful")
@@ -101,7 +102,13 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
--- Weather
+-- CPU
+local cpu = lain.widget.cpu {
+    settings = function()
+        widget:set_markup("   " .. cpu_now.usage .. "%")
+    end
+}
+
 
 
 ------------------------------------------------
@@ -218,6 +225,8 @@ awful.screen.connect_for_each_screen(function(s)
 	    tbox_separator2,
 	    tbox_separator,
 	    volumecfg.widget,
+	    tbox_separator,
+	    cpu.widget,
 	    tbox_separator,
 	    mytextclock,
 	    tbox_separator2,
