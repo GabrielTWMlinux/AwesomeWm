@@ -209,8 +209,9 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
 	    tbox_separator2,
-	    wibox.widget.textbox('   '),
+	    wibox.widget.textbox('    '),
  	    awful.widget.watch('dash -c "xbps-install -nuM | wc -l ; xbps-install -nuM | awk {print $1} "'),
+	    tbox_separator2,
 	    tbox_separator,
 	    wibox.widget.textbox('   '),
 	    awful.widget.watch('dash -c "curl -s  https://wttr.in/Rio-de-Janeiro?format="%t\n" | head -n 3"'),
