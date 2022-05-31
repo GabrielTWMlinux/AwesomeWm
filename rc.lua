@@ -98,7 +98,6 @@ volumecfg = volume_control({})
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
--- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
@@ -109,7 +108,12 @@ local cpu = lain.widget.cpu {
     end
 }
 
-
+-- Ram
+local mymem = lain.widget.mem {
+    settings = function()
+        widget:set_markup("   " .. mem_now.perc .. "%")
+    end
+}
 
 ------------------------------------------------
 -------------------- WIBAR ---------------------
@@ -220,11 +224,14 @@ awful.screen.connect_for_each_screen(function(s)
  	    awful.widget.watch('dash -c "xbps-install -nuM | wc -l ; xbps-install -nuM | awk {print $1} "'),
 	    tbox_separator2,
 	    tbox_separator,
-	    wibox.widget.textbox('   '),
+	    wibox.widget.textbox('   '),
 	    awful.widget.watch('dash -c "curl -s  https://wttr.in/Rio-de-Janeiro?format="%t\n" | head -n 3"'),
 	    tbox_separator2,
 	    tbox_separator,
+	    tbox_separator2,
 	    volumecfg.widget,
+	    tbox_separator, 
+	    mymem,
 	    tbox_separator,
 	    cpu.widget,
 	    tbox_separator,
