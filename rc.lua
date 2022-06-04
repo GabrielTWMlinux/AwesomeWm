@@ -87,7 +87,6 @@ awful.layout.layouts = {
 -- Separator Blanc
 tbox_separator2 = wibox.widget.textbox(" ")
 
-
 -- Separator
 tbox_separator = wibox.widget.textbox(" | ")
 
@@ -114,6 +113,13 @@ local mymem = lain.widget.mem {
         widget:set_markup("   " .. mem_now.perc .. "%")
     end
 }
+
+-- Wheather
+local weather = awful.widget.watch('dash -c "curl -s  https://wttr.in/Rio-de-Janeiro?format="%t\n" | head -n 3"')
+
+-- Updates
+local update = awful.widget.watch('dash -c "xbps-install -nuM | wc -l ; xbps-install -nuM | awk {print $1} "')
+
 
 ------------------------------------------------
 -------------------- WIBAR ---------------------
@@ -221,11 +227,11 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
 	    tbox_separator2,
 	    wibox.widget.textbox('    '),
- 	    awful.widget.watch('dash -c "xbps-install -nuM | wc -l ; xbps-install -nuM | awk {print $1} "'),
+	    update,
 	    tbox_separator2,
 	    tbox_separator,
 	    wibox.widget.textbox('   '),
-	    awful.widget.watch('dash -c "curl -s  https://wttr.in/Rio-de-Janeiro?format="%t\n" | head -n 3"'),
+	    weather,
 	    tbox_separator2,
 	    tbox_separator,
 	    tbox_separator2,
