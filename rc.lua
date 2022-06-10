@@ -59,7 +59,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "Dark/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "gruvbox/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -219,14 +219,14 @@ awful.screen.connect_for_each_screen(function(s)
 	    s.mylayoutbox,
 	    tbox_separator2,
 	    s.mytaglist,
-	    tbox_separator2,
+	    tbox_separator,
 	    s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-	    tbox_separator2,
-	    wibox.widget.textbox('    '),
+	    tbox_separator,
+	    wibox.widget.textbox('   '),
 	    update,
 	    tbox_separator2,
 	    tbox_separator,
@@ -280,27 +280,14 @@ globalkeys = gears.table.join(
         {description = "Search files", group = "Personal launchers"}),
     awful.key({ modkey         },   "t",      function () awful.spawn("alacritty -e htop") end,
         {description = "Open htop", group = "Personal launchers"}),
-    awful.key({ modkey         },    "w",     function () awful.spawn("/home/gabriel/.config/Scripts/windowlocation") end,
-       {description = "exec udates", group = "Personal lahnchers"}),	
     awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/.config/Scripts/power-menu.sh") end,
 	{description = "Rofi power menu", group = "Personal launchers"}),
-
-    awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/.config/Scripts/ram") end,
-	{description = "exec ram", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "C",      function () awful.spawn("/home/gabriel/.config/Scripts/cpu") end,
-        {descrition = "exec cpu", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/.config/Scripts/time") end,
-        {descrition = "exec time_date", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/.config/Scripts/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/.config/Scripts/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "s",      function () awful.spawn("/home/gabriel/.config/Scripts/screenshot") end,
         {description = "Screenshot", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "t",      function () awful.spawn("/home/gabriel/.config/Scripts/weather-notify") end,
-        {description = "Weather", group = "Personal launchers"}),
-    awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/.config/Scripts/xbps-update") end,
-       {description = "exec udates", group = "Personal lahnchers"}),	
     
 
     -- Control Clients
@@ -560,19 +547,19 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 beautiful.useless_gap = 5
 
--- beautiful.gap_single_client   = false
+ beautiful.gap_single_client   = false
 
 -- No borders when rearranging only 1 non-floating or maximized client
---  screen.connect_signal("arrange", function (s)
---    local only_one = #s.tiled_clients == 1
---    for _, c in pairs(s.clients) do
---        if only_one and not c.floating or c.maximized then
---            c.border_width = 0
---        else
---            c.border_width = 1 -- your border width
---        end
---    end
--- end)
+  screen.connect_signal("arrange", function (s)
+    local only_one = #s.tiled_clients == 1
+    for _, c in pairs(s.clients) do
+        if only_one and not c.floating or c.maximized then
+            c.border_width = 0
+        else
+            c.border_width = 1 -- your border width
+        end
+    end
+end)
 
 
 
