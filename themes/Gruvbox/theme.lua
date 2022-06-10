@@ -14,20 +14,20 @@ local theme = {}
 theme.font          = "Font Awesome 9"
 
 theme.bg_normal     = "#1d2021"
-theme.bg_focus      = "#458588"
+theme.bg_focus      = "#1d2021"
 theme.bg_urgent     = "#593131"
 theme.bg_minimize   = "#000000"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#fbf1c7"
-theme.fg_focus      = "#000000"
+theme.fg_focus      = "#d5c4a1"
 theme.fg_urgent     = "#CC9393"
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
-theme.border_focus  = "#83a598"
+theme.border_focus  = "#fbf1c7"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -41,8 +41,8 @@ theme.border_marked = "#91231c"
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example: 
-theme.taglist_bg_focus  = "#1d2021"
-theme.taglist_fg_focus  = "#458588"
+theme.taglist_bg_focus  = "#32302f"
+theme.taglist_fg_focus  = "#fbf1c7"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
@@ -117,7 +117,7 @@ theme.layout_cornernw = themes_path.."default/layouts/cornernww.png"
 theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
-theme.tasklist_disable_icon                     = false
+theme.tasklist_disable_icon                     = true
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
