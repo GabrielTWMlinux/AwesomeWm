@@ -59,7 +59,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "gruvbox/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "Blue/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -219,14 +219,14 @@ awful.screen.connect_for_each_screen(function(s)
 	    s.mylayoutbox,
 	    tbox_separator2,
 	    s.mytaglist,
-	    tbox_separator,
+	    tbox_separator2,
 	    s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-	    tbox_separator,
-	    wibox.widget.textbox('   '),
+	    tbox_separator2,
+	    wibox.widget.textbox('    '),
 	    update,
 	    tbox_separator2,
 	    tbox_separator,
@@ -556,7 +556,7 @@ beautiful.useless_gap = 5
         if only_one and not c.floating or c.maximized then
             c.border_width = 0
         else
-            c.border_width = 1 -- your border width
+            c.border_width = 2 -- your border width
         end
     end
 end)
