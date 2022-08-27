@@ -11,7 +11,7 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "Font Awesome 10"
+theme.font          = "Font Awesome 9"
 
 theme.bg_normal     = "#1a1b26"
 theme.bg_focus      = "#2e334b"
@@ -27,7 +27,7 @@ theme.fg_minimize   = "#ffffff"
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(1)
 theme.border_normal = "#000000"
-theme.border_focus  = "#73daca"
+theme.border_focus  = "#b4f9f8"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -42,7 +42,7 @@ theme.border_marked = "#91231c"
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example: 
 theme.tasklist_bg_focus  = "#1a1b26"
-theme.tasklist_fg_focus  = "#565f89"
+theme.tasklist_fg_focus  = "#6c7081"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
