@@ -282,7 +282,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/.config/Scripts/power-menu.sh") end,
 	{description = "Rofi power menu", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "p",      function () awful.spawn("/home/gabriel/.config/Scripts/srcscript-rofi") end,
-        {description = "exec volup", group = "Personal launchers"}),
+        {description = "src-packages", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/.config/Scripts/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/.config/Scripts/volume-") end,
