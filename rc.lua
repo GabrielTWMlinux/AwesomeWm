@@ -283,7 +283,7 @@ globalkeys = gears.table.join(
 	{description = "Rofi power menu", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "p",      function () awful.spawn("/home/gabriel/.config/Scripts/srcscript-rofi") end,
         {description = "exec volup", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/.config/Scripts/volume-") end,
+    awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/.config/Scripts/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/.config/Scripts/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
@@ -546,7 +546,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 5
+beautiful.useless_gap = 4
 
  beautiful.gap_single_client   = false
 
