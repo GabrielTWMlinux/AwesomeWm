@@ -217,8 +217,6 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
 	    tbox_separator2,
-	    s.mylayoutbox,
-	    tbox_separator,
 	    s.mytaglist,
 	    tbox_separator,
 	    s.mypromptbox,
@@ -226,7 +224,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-	    tbox_separator2,
+	    tbox_separator,
 	    wibox.widget.textbox('    '),
 	    update,
 	    tbox_separator2,
@@ -283,7 +281,9 @@ globalkeys = gears.table.join(
         {description = "Open htop", group = "Personal launchers"}),
     awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/.config/Scripts/power-menu.sh") end,
 	{description = "Rofi power menu", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/.config/Scripts/volume+") end,
+    awful.key({ "Shift"         },   "p",      function () awful.spawn("/home/gabriel/.config/Scripts/srcscript-rofi") end,
+        {description = "exec volup", group = "Personal launchers"}),
+    awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/.config/Scripts/volume-") end,
         {description = "exec volup", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/.config/Scripts/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
@@ -546,7 +546,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 3
+beautiful.useless_gap = 5
 
  beautiful.gap_single_client   = false
 
