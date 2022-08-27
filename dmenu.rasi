@@ -5,9 +5,9 @@
  */
 
 * {
-    background-color:      #16161E;
+    background-color:      #1a1b26;
     border-color:          White;
-    text-color:           White;
+    text-color:           #ffffff;
     font:            "Font Awesome 9";
 }
 window {
@@ -34,10 +34,12 @@ element {
     padding: 0px 2px;
 }
 element selected {
-    background-color: #345e81;
+    background-color: #2e334b;
+    text-color: #ffffff;
 }
 prompt {
-    background-color: #345e81;
+    background-color: #2e334b;
+    text-color: #ffffff;
 }
 
 
