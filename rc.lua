@@ -225,7 +225,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
 	    tbox_separator,
-	    wibox.widget.textbox('    '),
+	    wibox.widget.textbox('   '),
 	    update,
 	    tbox_separator2,
 	    tbox_separator,
@@ -557,7 +557,7 @@ beautiful.useless_gap = 5
         if only_one and not c.floating or c.maximized then
             c.border_width = 0
         else
-            c.border_width = 2 -- your border width
+            c.border_width = 1 -- your border width
         end
     end
 end)
