@@ -95,13 +95,13 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 mytextclock = wibox.widget.textclock()
 
 -- Volume
-local volume = awful.widget.watch('/home/gabriel/.config/Scripts/volumedwm')
+local volume = awful.widget.watch('/home/gabriel/.config/Scripts/volume-bar')
 
 -- Cpu
-local cpu = awful.widget.watch('/home/gabriel/.config/Scripts/cpu-dwm')
+local cpu = awful.widget.watch('/home/gabriel/.config/Scripts/cpu-bar')
 
 -- Ram
-local ram = awful.widget.watch('/home/gabriel/.config/Scripts/ram-dwm')
+local ram = awful.widget.watch('/home/gabriel/.config/Scripts/ram-bar')
 
 -- Wheather
 local weather = awful.widget.watch('/home/gabriel/.config/Scripts/weather')
