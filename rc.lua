@@ -13,8 +13,6 @@ require("awful.autofocus")
 -- Widget and layout library
 local watch = require("awful.widget.watch")
 local wibox = require("wibox")
-local lain = require("lain")
-local volume_control= require("volume-control")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -90,32 +88,23 @@ tbox_separator2 = wibox.widget.textbox(" ")
 -- Separator
 tbox_separator = wibox.widget.textbox(" | ")
 
--- define your volume control, using default settings:
-volumecfg = volume_control({})
-
-
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
--- CPU
-local cpu = lain.widget.cpu {
-    settings = function()
-        widget:set_markup("   " .. cpu_now.usage .. "%")
-    end
-}
+-- Volume
+local volume = awful.widget.watch('/home/gabriel/.config/Scripts/volumedwm')
+
+-- Cpu
+local cpu = awful.widget.watch('/home/gabriel/.config/Scripts/cpu-dwm')
 
 -- Ram
-local mymem = lain.widget.mem {
-    settings = function()
-        widget:set_markup("   " .. mem_now.perc .. "%")
-    end
-}
+local ram = awful.widget.watch('/home/gabriel/.config/Scripts/ram-dwm')
 
 -- Wheather
-local weather = awful.widget.watch('dash -c "curl -s  https://wttr.in/Rio-de-Janeiro?format="%t\n" | head -n 3"')
+local weather = awful.widget.watch('/home/gabriel/.config/Scripts/weather')
 
 -- Updates
 local update = awful.widget.watch('dash -c "xbps-install -nuM | wc -l ; xbps-install -nuM | awk {print $1} "')
@@ -227,18 +216,18 @@ awful.screen.connect_for_each_screen(function(s)
 	    tbox_separator,
 	    wibox.widget.textbox('   '),
 	    update,
-	    tbox_separator2,
 	    tbox_separator,
 	    wibox.widget.textbox('   '),
 	    weather,
-	    tbox_separator2,
 	    tbox_separator,
-	    tbox_separator2,
-	    volumecfg.widget,
+	    wibox.widget.textbox('   '),
+	    volume,
 	    tbox_separator, 
-	    mymem,
+	    wibox.widget.textbox('   '),
+	    ram,
 	    tbox_separator,
-	    cpu.widget,
+	    wibox.widget.textbox('    '),
+	    cpu,
 	    tbox_separator,
 	    mytextclock,
 	    tbox_separator2,
