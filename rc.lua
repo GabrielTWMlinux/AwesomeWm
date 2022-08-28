@@ -86,7 +86,7 @@ awful.layout.layouts = {
 tbox_separator2 = wibox.widget.textbox(" ")
 
 -- Separator
-tbox_separator = wibox.widget.textbox(" | ")
+tbox_separator = wibox.widget.textbox(" |  ")
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
