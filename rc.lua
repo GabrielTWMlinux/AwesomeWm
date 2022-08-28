@@ -86,7 +86,7 @@ awful.layout.layouts = {
 tbox_separator2 = wibox.widget.textbox(" ")
 
 -- Separator
-tbox_separator = wibox.widget.textbox(" |  ")
+tbox_separator = wibox.widget.textbox("| ")
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
@@ -216,6 +216,7 @@ awful.screen.connect_for_each_screen(function(s)
 	    tbox_separator,
 	    wibox.widget.textbox('   '),
 	    update,
+	    tbox_separator2,
 	    tbox_separator,
 	    wibox.widget.textbox('   '),
 	    weather,
@@ -226,7 +227,7 @@ awful.screen.connect_for_each_screen(function(s)
 	    wibox.widget.textbox('   '),
 	    ram,
 	    tbox_separator,
-	    wibox.widget.textbox('    '),
+	    wibox.widget.textbox('   '),
 	    cpu,
 	    tbox_separator,
 	    mytextclock,
