@@ -57,7 +57,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "TokyoNight/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "dark/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -205,8 +205,8 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-	    tbox_separator2,
 	    s.mytaglist,
+	    tbox_separator2,
 	    tbox_separator,
 	    s.mypromptbox,
         },
@@ -227,7 +227,7 @@ awful.screen.connect_for_each_screen(function(s)
 	    wibox.widget.textbox('   '),
 	    ram,
 	    tbox_separator,
-	    wibox.widget.textbox('   '),
+	    wibox.widget.textbox('  '),
 	    cpu,
 	    tbox_separator,
 	    mytextclock,
@@ -536,7 +536,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 4
+beautiful.useless_gap = 3
 
  beautiful.gap_single_client   = false
 
