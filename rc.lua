@@ -57,7 +57,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "dark/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "tokyodark/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -198,7 +198,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true, height = 22 })
+    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true, padding = 4 })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
