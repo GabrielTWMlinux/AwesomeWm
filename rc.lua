@@ -93,22 +93,46 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+local clock = wibox.widget.background()
+clock:set_widget(mytextclock)
+clock:set_bg("#343b58")
+clock:set_shape(gears.shape.rectangle)
 
 -- Volume
-local volume = awful.widget.watch('/home/gabriel/.config/Scripts/volume-bar')
+local volume = awful.widget.watch('/home/gabriel/.config/Scripts/volume-wibox')
+local volumew = wibox.widget.background()
+volumew:set_widget(volume)
+volumew:set_bg("#24415a")
+volumew:set_shape(gears.shape.rectangle)
 
 -- Cpu
-local cpu = awful.widget.watch('/home/gabriel/.config/Scripts/cpu-bar')
+local cpu = awful.widget.watch('/home/gabriel/.config/Scripts/cpu-wibox')
+local cpuw = wibox.widget.background()
+cpuw:set_widget(cpu)
+cpuw:set_bg("#24415a")
+cpuw:set_shape(gears.shape.rectangle)
 
 -- Ram
-local ram = awful.widget.watch('/home/gabriel/.config/Scripts/ram-bar')
+local ram = awful.widget.watch('/home/gabriel/.config/Scripts/ram-wibox')
+local ramw = wibox.widget.background()
+ramw:set_widget(ram)
+ramw:set_bg("#343b58")
+ramw:set_shape(gears.shape.rectangle)
 
 -- Wheather
-local weather = awful.widget.watch('/home/gabriel/.config/Scripts/weather')
+local weather = awful.widget.watch('/home/gabriel/.config/Scripts/weather-wibox')
+local weatherw = wibox.widget.background()
+weatherw:set_widget(weather)
+weatherw:set_bg("#343b58")
+weatherw:set_shape(gears.shape.rectangle)
+
 
 -- Updates
-local update = awful.widget.watch('dash -c "xbps-install -nuM | wc -l ; xbps-install -nuM | awk {print $1} "')
-
+local update = awful.widget.watch('/home/gabriel/.config/Scripts/updates-wibox')
+local updatew = wibox.widget.background()
+updatew:set_widget(update)
+updatew:set_bg("#24415a")
+updatew:set_shape(gears.shape.rectangular_tag)
 
 ------------------------------------------------
 -------------------- WIBAR ---------------------
@@ -153,6 +177,10 @@ local tasklist_buttons = gears.table.join(
                      awful.button({ }, 5, function ()
                                               awful.client.focus.byidx(-1)
                                           end))
+
+gears.shape.powerline = function(cr, width, height)
+    gears.shape.powerline(cr, width, height, -15)    
+end
 
 local function set_wallpaper(s)
     -- Wallpaper
@@ -213,25 +241,12 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-	    tbox_separator,
-	    wibox.widget.textbox('   '),
-	    update,
-	    tbox_separator2,
-	    tbox_separator,
-	    wibox.widget.textbox('   '),
-	    weather,
-	    tbox_separator,
-	    wibox.widget.textbox('   '),
-	    volume,
-	    tbox_separator, 
-	    wibox.widget.textbox('   '),
-	    ram,
-	    tbox_separator,
-	    wibox.widget.textbox('  '),
-	    cpu,
-	    tbox_separator,
-	    mytextclock,
-	    tbox_separator2,
+	    updatew,
+	    weatherw,
+	    volumew,
+	    ramw,
+	    cpuw,
+	    clock,
             wibox.widget.systray(),
         },
     }
