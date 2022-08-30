@@ -57,7 +57,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "tokyodark/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "darkgreen/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -95,35 +95,35 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 mytextclock = wibox.widget.textclock()
 local clock = wibox.widget.background()
 clock:set_widget(mytextclock)
-clock:set_bg("#343b58")
+clock:set_bg("#1a1a1a")
 clock:set_shape(gears.shape.rectangle)
 
 -- Volume
 local volume = awful.widget.watch('/home/gabriel/.config/Scripts/volume-wibox')
 local volumew = wibox.widget.background()
 volumew:set_widget(volume)
-volumew:set_bg("#24415a")
+volumew:set_bg("#1a1a1a")
 volumew:set_shape(gears.shape.rectangle)
 
 -- Cpu
 local cpu = awful.widget.watch('/home/gabriel/.config/Scripts/cpu-wibox')
 local cpuw = wibox.widget.background()
 cpuw:set_widget(cpu)
-cpuw:set_bg("#24415a")
+cpuw:set_bg("#1a1a1a")
 cpuw:set_shape(gears.shape.rectangle)
 
 -- Ram
 local ram = awful.widget.watch('/home/gabriel/.config/Scripts/ram-wibox')
 local ramw = wibox.widget.background()
 ramw:set_widget(ram)
-ramw:set_bg("#343b58")
+ramw:set_bg("#1a1a1a")
 ramw:set_shape(gears.shape.rectangle)
 
 -- Wheather
 local weather = awful.widget.watch('/home/gabriel/.config/Scripts/weather-wibox')
 local weatherw = wibox.widget.background()
 weatherw:set_widget(weather)
-weatherw:set_bg("#343b58")
+weatherw:set_bg("#1a1a1a")
 weatherw:set_shape(gears.shape.rectangle)
 
 
@@ -131,7 +131,7 @@ weatherw:set_shape(gears.shape.rectangle)
 local update = awful.widget.watch('/home/gabriel/.config/Scripts/updates-wibox')
 local updatew = wibox.widget.background()
 updatew:set_widget(update)
-updatew:set_bg("#24415a")
+updatew:set_bg("#1a1a1a")
 updatew:set_shape(gears.shape.rectangular_tag)
 
 ------------------------------------------------
