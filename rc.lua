@@ -178,8 +178,8 @@ local tasklist_buttons = gears.table.join(
                                               awful.client.focus.byidx(-1)
                                           end))
 
-gears.shape.powerline = function(cr, width, height)
-    gears.shape.powerline(cr, width, height, -15)    
+shape = function(cr, width, height)
+    gears.shape.powerline(cr, width, height, -15)
 end
 
 local function set_wallpaper(s)
@@ -202,7 +202,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "  ", "  ", "  ", "  ", "  ", "  ", "  " }, s, awful.layout.layouts[1])
 
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
@@ -213,11 +213,11 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist {
-        screen  = s,
-        filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
-    }
+s.mytaglist = awful.widget.taglist {
+    screen  = s,
+    filter  = awful.widget.taglist.filter.all,
+    buttons = taglist_buttons
+}
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
@@ -226,7 +226,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true, padding = 4 })
+    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true, padding = 3 })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
