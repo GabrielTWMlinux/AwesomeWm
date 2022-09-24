@@ -12,6 +12,7 @@ local awful = require("awful")
 require("awful.autofocus")
 -- Widget and layout library
 local watch = require("awful.widget.watch")
+local lain = require("lain")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
@@ -99,40 +100,40 @@ clock:set_bg("#1a1a1a")
 clock:set_shape(gears.shape.rectangle)
 
 -- Volume
-local volume = awful.widget.watch('/home/gabriel/.config/Scripts/volume-wibox')
+local volume = awful.widget.watch('/home/gabriel/.config/Scripts/wibar/volume-wibox')
 local volumew = wibox.widget.background()
 volumew:set_widget(volume)
 volumew:set_bg("#1a1a1a")
 volumew:set_shape(gears.shape.rectangle)
 
 -- Cpu
-local cpu = awful.widget.watch('/home/gabriel/.config/Scripts/cpu-wibox')
-local cpuw = wibox.widget.background()
-cpuw:set_widget(cpu)
-cpuw:set_bg("#1a1a1a")
-cpuw:set_shape(gears.shape.rectangle)
+local cpu = awful.widget.watch('/home/gabriel/.config/Scripts/wibar/cpu-wibox')
+--local cpuw = wibox.widget.background()
+--cpuw:set_widget(cpu)
+--cpuw:set_bg("#1a1a1a")
+--cpuw:set_shape(gears.shape.rectangle)
 
 -- Ram
-local ram = awful.widget.watch('/home/gabriel/.config/Scripts/ram-wibox')
-local ramw = wibox.widget.background()
-ramw:set_widget(ram)
-ramw:set_bg("#1a1a1a")
-ramw:set_shape(gears.shape.rectangle)
+local ram = awful.widget.watch('/home/gabriel/.config/Scripts/wibar/ram-wibox')
+--local ramw = wibox.widget.background()
+--ramw:set_widget(ram)
+--ramw:set_bg("#1a1a1a")
+--ramw:set_shape(gears.shape.rectangle)
 
 -- Wheather
-local weather = awful.widget.watch('/home/gabriel/.config/Scripts/weather-wibox')
-local weatherw = wibox.widget.background()
-weatherw:set_widget(weather)
-weatherw:set_bg("#1a1a1a")
-weatherw:set_shape(gears.shape.rectangle)
-
+local weather = awful.widget.watch('/home/gabriel/.config/Scripts/wibar/weather-wibox')
+--local weatherw = wibox.widget.background()
+--weatherw:set_widget(weather)
+--weatherw:set_bg("#1a1a1a")
+--weatherw:set_shape(gears.shape.rectangle)
 
 -- Updates
-local update = awful.widget.watch('/home/gabriel/.config/Scripts/updates-wibox')
+local update = awful.widget.watch('/home/gabriel/.config/Scripts/wibar/updates-wibox')
 local updatew = wibox.widget.background()
 updatew:set_widget(update)
 updatew:set_bg("#1a1a1a")
 updatew:set_shape(gears.shape.rectangular_tag)
+
 
 ------------------------------------------------
 -------------------- WIBAR ---------------------
@@ -202,7 +203,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "  ", "  ", "  ", "  ", "  ", "  ", "  " }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
@@ -226,7 +227,7 @@ s.mytaglist = awful.widget.taglist {
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true, padding = 3 })
+    s.mywibox = awful.wibar({ position = "top", screen = s, visible = true })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -235,19 +236,20 @@ s.mytaglist = awful.widget.taglist {
             layout = wibox.layout.fixed.horizontal,
 	    s.mytaglist,
 	    tbox_separator2,
-	    tbox_separator,
 	    s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-	    updatew,
-	    weatherw,
-	    volumew,
-	    ramw,
-	    cpuw,
-	    clock,
+	    update,
+	    tbox_separator2,
+	    tbox_separator2,
+	    volume, 
+	    tbox_separator2,
+	    tbox_separator2,
+	    mytextclock,
             wibox.widget.systray(),
+	    s.mylayoutbox,
         },
     }
 end)
@@ -280,17 +282,17 @@ globalkeys = gears.table.join(
         {descrption = "Open ranger", group = "Personal launchers"}),
     awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun -display-drun ' Exec ' ") end,
        {description = "rofi-apps", group = "Personal launchers"}),
-    awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/.config/Scripts/rofi-files") end,
+    awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/.config/Scripts/rofi/rofi-files") end,
         {description = "Search files", group = "Personal launchers"}),
     awful.key({ modkey         },   "t",      function () awful.spawn("alacritty -e htop") end,
         {description = "Open htop", group = "Personal launchers"}),
-    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/.config/Scripts/power-menu.sh") end,
+    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/.config/Scripts/rofi/power-menu.sh") end,
 	{description = "Rofi power menu", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "p",      function () awful.spawn("/home/gabriel/.config/Scripts/srcscript-rofi") end,
+    awful.key({ "Shift"         },   "p",      function () awful.spawn("/home/gabriel/.config/Scripts/rofi/srcscript-rofi") end,
         {description = "src-packages", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/.config/Scripts/volume+") end,
+    awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/.config/Scripts/notify/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/.config/Scripts/volume-") end,
+    awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/.config/Scripts/notify/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "s",      function () awful.spawn("/home/gabriel/.config/Scripts/screenshot") end,
         {description = "Screenshot", group = "Personal launchers"}),
@@ -551,21 +553,21 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 3
+beautiful.useless_gap = 4
 
- beautiful.gap_single_client   = false
+-- beautiful.gap_single_client   = false
 
 -- No borders when rearranging only 1 non-floating or maximized client
-  screen.connect_signal("arrange", function (s)
-    local only_one = #s.tiled_clients == 1
-    for _, c in pairs(s.clients) do
-        if only_one and not c.floating or c.maximized then
-            c.border_width = 0
-        else
-            c.border_width = 1 -- your border width
-        end
-    end
-end)
+--  screen.connect_signal("arrange", function (s)
+--    local only_one = #s.tiled_clients == 1
+--    for _, c in pairs(s.clients) do
+--        if only_one and not c.floating or c.maximized then
+--            c.border_width = 0
+--        else
+--            c.border_width = 1 -- your border width
+--        end
+--    end
+--end)
 
 
 
