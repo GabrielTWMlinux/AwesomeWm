@@ -56,7 +56,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "Tokyo/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "TokyoNight/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -114,30 +114,30 @@ globalkeys = gears.table.join(
         {descrption = "Open ranger", group = "Personal launchers"}),
     awful.key({ modkey         },   "p",      function () awful.spawn("rofi -show drun -display-drun ' Exec ' ") end,
        {description = "rofi-apps", group = "Personal launchers"}),
-    awful.key({ modkey         },   "r",      function () awful.spawn("/home/gabriel/.config/Scripts/rofi-files") end,
+    awful.key({ "Shift"        },   "p",      function () awful.spawn("/home/gabriel/.config/Scripts/rofi/srcscript-rofi") end,
+       {description = "rofi-apps", group = "Personal launchers"}),
+    awful.key({ "Shift"         },  "f",      function () awful.spawn("/home/gabriel/.config/Scripts/rofi/rofi-files") end,
         {description = "Search files", group = "Personal launchers"}),
     awful.key({ modkey         },   "t",      function () awful.spawn("alacritty -e htop") end,
         {description = "Open htop", group = "Personal launchers"}),
-    awful.key({ modkey         },    "w",     function () awful.spawn("/home/gabriel/.config/Scripts/windowlocation") end,
+    awful.key({ "Shift"         },    "w",     function () awful.spawn("/home/gabriel/.config/Scripts/rofi/windowlocation") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
-    awful.key({ modkey		},   "x",	function () awful.spawn("/home/gabriel/.config/Scripts/power-menu.sh") end,
+    awful.key({ "Shift"		},   "x",	function () awful.spawn("/home/gabriel/.config/Scripts/rofi/power-menu.sh") end,
 	{description = "Rofi power menu", group = "Personal launchers"}),
 
-    awful.key({ "Shift"         },   "b",      function () awful.spawn("/home/gabriel/.config/Scripts/ram") end,
+    awful.key({ "Shift"         },   "r",      function () awful.spawn("/home/gabriel/.config/Scripts/notify/ramcpu-notify") end,
 	{description = "exec ram", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "C",      function () awful.spawn("/home/gabriel/.config/Scripts/cpu") end,
-        {descrition = "exec cpu", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/.config/Scripts/time") end,
+    awful.key({ "Shift"         },   "d",      function () awful.spawn("/home/gabriel/.config/Scripts/notify/time") end,
         {descrition = "exec time_date", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/.config/Scripts/volume+") end,
+    awful.key({ "Shift"         },   "m",      function () awful.spawn("/home/gabriel/.config/Scripts/notify/volume+") end,
         {description = "exec volup", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/.config/Scripts/volume-") end,
+    awful.key({ "Shift"         },   "n",      function () awful.spawn("/home/gabriel/.config/Scripts/notify/volume-") end,
         {descritipn = "exec voldown", group = "Personal launchers"}),
     awful.key({ "Shift"         },   "s",      function () awful.spawn("/home/gabriel/.config/Scripts/screenshot") end,
         {description = "Screenshot", group = "Personal launchers"}),
-    awful.key({ "Shift"         },   "t",      function () awful.spawn("/home/gabriel/.config/Scripts/weather-notify") end,
+    awful.key({ "Shift"         },   "t",      function () awful.spawn("/home/gabriel/.config/Scripts/notify/weather-notify") end,
         {description = "Weather", group = "Personal launchers"}),
-    awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/.config/Scripts/xbps-update") end,
+    awful.key({ "Shift"         },    "u",     function () awful.spawn("/home/gabriel/.config/Scripts/notify/xbps-notify") end,
        {description = "exec udates", group = "Personal lahnchers"}),	
     
 
@@ -183,18 +183,14 @@ clientkeys = gears.table.join(
 
 
     -- Layout Manipulation
-    awful.key({ modkey, "Shift"   }, "f", function (c) c.fullscreen = not c.fullscreen c:raise() end,
+    awful.key({ "Control"         }, "F6", function (c) c.fullscreen = not c.fullscreen c:raise() end,
        	      {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, 	  }, "n",  awful.client.floating.toggle                     ,
+    awful.key({ "Control", 	  }, "F7",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
-    awful.key({ modkey, 	  }, ",", function (c) c:swap(awful.client.getmaster()) end,
+    awful.key({ modkey, "Shift"   }, "Return", function (c) c:swap(awful.client.getmaster()) end,
               {description = "move to master", group = "client"}),
-    awful.key({ modkey,           }, "m", function (c) c.maximized = not c.maximized c:raise() end,
+    awful.key({ "Control"          }, "F8", function (c) c.maximized = not c.maximized c:raise() end,
               {description = "(un)maximize", group = "client"}),
-    awful.key({ modkey, "Control"   }, "m",function (c) c.maximized_vertical = not c.maximized_vertical c:raise() end,
-              {description = "(un)maximize vertically", group = "client"}),
-    awful.key({ modkey, "Control"   }, "n",function (c) c.maximized_horizontal = not c.maximized_horizontal c:raise() end,
-              {description = "(un)maximize horizontally", group = "client"}),
 
     awful.key({ modkey, "Control" }, "Up", function (c)
       if c.floating then
@@ -324,7 +320,7 @@ end
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = 0,
+      properties = { border_width = 2,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
@@ -396,7 +392,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --------------------- GAPS ----------------------
 -------------------------------------------------
 
-beautiful.useless_gap = 12
+beautiful.useless_gap = 8
 
 -- beautiful.gap_single_client   = false
 
